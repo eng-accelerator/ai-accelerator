@@ -1,0 +1,88 @@
+# Streamlit Breakout Room Assignment: Interactive Text Processor
+
+**Time: 20-30 minutes**
+
+## Objective
+Build an interactive text processing application that will prepare you for creating conversational AI interfaces. This assignment covers key Streamlit concepts you'll need for the upcoming ChatGPT-like application session.
+
+## Assignment Tasks
+
+### Task 1: Setup and Basic Interface (5 minutes)
+1. Create a new Python file called `text_processor.py`
+2. Set up a Streamlit app with:
+   - A title: "Interactive Text Processor"
+   - A subtitle explaining what the app does
+   - A sidebar for configuration options
+
+### Task 2: Input Components (10 minutes)
+Create the following input elements:
+1. **Text Area**: For users to input their text (use `st.text_area`)
+2. **Sidebar Options**:
+   - Selectbox for processing type: "Word Count", "Character Count", "Reverse Text", "Uppercase", "Title Case"
+   - Number input for character limit (min: 10, max: 500, default: 100)
+   - Checkbox for "Show processing steps"
+
+### Task 3: Text Processing Logic (10 minutes)
+Implement functions for each processing type:
+- **Word Count**: Count and display number of words
+- **Character Count**: Count characters (with and without spaces)
+- **Reverse Text**: Reverse the input text
+- **Uppercase**: Convert to uppercase
+- **Title Case**: Convert to title case
+
+### Task 4: Dynamic Display (5 minutes)
+- Show the processed result in a styled container
+- If "Show processing steps" is checked, display intermediate steps
+- Add a success message when processing is complete
+- Include a download button for the processed text
+
+## Bonus Challenges (if time permits)
+1. Add input validation (minimum text length)
+2. Create a "processing history" that shows the last 3 operations
+3. Add a text length warning if input exceeds the character limit
+4. Style the output with different colors for different processing types
+
+## Key Streamlit Concepts to Practice
+- `st.text_area()` - Text input
+- `st.selectbox()` - Dropdown selection
+- `st.number_input()` - Numeric input
+- `st.checkbox()` - Boolean input
+- `st.sidebar` - Sidebar components
+- `st.container()` or `st.columns()` - Layout
+- `st.success()`, `st.warning()` - Status messages
+- `st.download_button()` - File download
+- Session state (bonus)
+
+## Expected Output
+Your app should:
+1. Accept text input from users
+2. Allow users to select different processing options
+3. Display results dynamically as users interact
+4. Provide feedback and status messages
+5. Look clean and professional
+
+## Hints
+- Use `st.empty()` or conditional rendering to update content dynamically
+- Remember to handle empty input cases
+- Test your app frequently with `streamlit run text_processor.py`
+- Use `st.write()` for debugging if needed
+
+## Why This Matters
+This assignment practices:
+- **User Input Handling**: Essential for chat applications
+- **Dynamic Content Updates**: Key for real-time conversations
+- **State Management**: Important for maintaining chat history
+- **UI/UX Design**: Critical for user-friendly interfaces
+
+These skills directly translate to building conversational AI applications where you need to handle user messages, process them, and display responses dynamically.
+
+## Getting Started
+```python
+import streamlit as st
+
+st.set_page_config(page_title="Text Processor", page_icon="📝")
+
+# Your code here
+```
+
+**Good luck! Ask for help if you get stuck, and remember - the goal is learning, not perfection!**
