@@ -24,7 +24,7 @@ Here's how you can manage and verify your Hugging Face token:
 2.  **Store your Token Securely:** It's crucial to store your token securely. In Google Colab, you can use the "Secrets" feature (🔑 icon in the left panel) to store your token as an environment variable. Name your secret `HF_TOKEN`.
 3.  **Log in Programmatically:** You can use the `huggingface_hub` library to log in to the Hugging Face Hub using your token.
 
-Let's add a code block to install the necessary library and verify your token.
+#Let's add a code block to install the necessary library and verify your token.
 
 !pip install huggingface_hub
 
@@ -48,7 +48,7 @@ Hugging Face isn't just about text! Let's explore how to use models for other mo
 
 ### Image Classification
 
-Image classification is the task of categorizing an image into one of several classes. We can use a pre-trained image classification model from the Hugging Face Hub.
+#Image classification is the task of categorizing an image into one of several classes. We can use a pre-trained image classification model from the Hugging Face Hub.
 
 from transformers import pipeline
 from PIL import Image
@@ -70,7 +70,7 @@ for prediction in predictions:
 
 ### Audio Classification
 
-Audio classification is the task of categorizing audio data into different classes, such as identifying the type of sound or the speaker's emotion.
+#Audio classification is the task of categorizing audio data into different classes, such as identifying the type of sound or the speaker's emotion.
 
 from transformers import pipeline
 import torch
@@ -95,7 +95,7 @@ for prediction in predictions:
 
 ### Working with Datasets
 
-Hugging Face provides the `datasets` library, which makes it easy to access and work with a wide variety of datasets for various ML tasks.
+#Hugging Face provides the `datasets` library, which makes it easy to access and work with a wide variety of datasets for various ML tasks.
 
 from datasets import load_dataset
 
@@ -119,7 +119,7 @@ While we won't cover Gradio in detail in this Colab, it's a valuable tool for bu
 
 Audio transcription is the task of converting spoken language into text. Hugging Face also offers models for this task.
 
-Here's how you can use a pre-trained model for audio transcription:
+#Here's how you can use a pre-trained model for audio transcription:
 
 from transformers import pipeline
 import soundfile as sf
