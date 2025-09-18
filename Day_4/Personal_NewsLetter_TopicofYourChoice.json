@@ -1,0 +1,180 @@
+{
+  "name": "Personal_NewsLetter_TopicofYourChoice",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -192,
+        0
+      ],
+      "id": "e79c7923-6ded-403a-b38a-69865e704f61",
+      "name": "When chat message received",
+      "webhookId": "31064fa7-6017-4764-b5a2-412e8b3491bc"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        0
+      ],
+      "id": "9e20e08c-e66e-4eef-9a18-58ff1eb34929",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -32,
+        224
+      ],
+      "id": "2ec66bd5-1f42-4671-9024-fb42044baa41",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "KgeowNkzyiBwGKU3",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=d746b944fb2e42509b22ea26b889be74",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        240
+      ],
+      "id": "a570723f-0736-42e4-a67d-053eebaaa0bd",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "sendTo": "divijbajaj5@gmail.com",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        432,
+        224
+      ],
+      "id": "143c375b-acce-4aa2-a819-a2972f998aa4",
+      "name": "Send a message in Gmail",
+      "webhookId": "f0bddde7-55e0-46f2-90bb-d3a6d0f77779",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "XOgtWKTp6PiU03hV",
+          "name": "Divij-Mentor"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 50
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        160,
+        208
+      ],
+      "id": "2b3747e1-1559-4176-9aa2-0388ff959d7f",
+      "name": "Simple Memory"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message in Gmail": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "690dd51f-bebb-40cb-96b4-432a03d3a732",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5adcf055af070598f43d6403984bb72f646a6684587b890d0694cbc7278091f8"
+  },
+  "id": "6AMAiHQb37fsR0u9",
+  "tags": []
+}
