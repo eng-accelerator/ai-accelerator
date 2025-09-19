@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Viral LinkedIn Post Generator - Bolt Schema",
+  "type": "object",
+  "properties": {
+    "theme": {
+      "type": "string",
+      "title": "Theme / Idea",
+      "description": "Enter the theme or idea for the post (e.g. 'AI in healthcare')",
+      "minLength": 1
+    },
+    "post_type": {
+      "type": "string",
+      "title": "Post Type / Category",
+      "enum": [
+        "Thought Leadership",
+        "Industry Insights",
+        "How-to / Educational",
+        "Personal Story",
+        "Opinion",
+        "Announcement",
+        "Case Study"
+      ]
+    },
+    "length": {
+      "type": "string",
+      "title": "Length",
+      "enum": [
+        "Short (1-3 lines)",
+        "Medium (3-8 lines)",
+        "Long (8+ lines)"
+      ]
+    },
+    "tone": {
+      "type": "string",
+      "title": "Tone",
+      "enum": [
+        "Inspirational",
+        "Personal Story",
+        "Professional / Formal",
+        "GenZ / Casual",
+        "Humorous",
+        "Motivational"
+      ]
+    }
+  },
+  "required": ["theme", "post_type", "length", "tone"],
+
+  "ui": {
+    "layout": {
+      "type": "vertical",
+      "order": ["theme", "post_type", "length", "tone"]
+    },
+
+    "actions": {
+      "generate": {
+        "label": "Generate",
+        "type": "button",
+        "method": "POST",
+        "url_placeholder": "{{GENERATE_WEBHOOK_URL}}",
+        "contentType": "application/json",
+        "body": {
+          "theme": "{{theme}}",
+          "post_type": "{{post_type}}",
+          "length": "{{length}}",
+          "tone": "{{tone}}"
+        },
+        "response": {
+          "type": "text",
+          "map_to": "generated_post"
+        }
+      },
+
+      "publish": {
+        "label": "Publish",
+        "type": "button",
+        "method": "POST",
+        "url_placeholder": "{{PUBLISH_WEBHOOK_URL}}",
+        "contentType": "application/json",
+        "body": {
+          "post_text": "{{generated_post}}",
+          "metadata": {
+            "theme": "{{theme}}",
+            "post_type": "{{post_type}}",
+            "length": "{{length}}",
+            "tone": "{{tone}}"
+          }
+        },
+        "response": {
+          "type": "json",
+          "map_to": "publish_response"
+        }
+      }
+    },
+
+    "fields": {
+      "generated_post": {
+        "type": "string",
+        "widget": "textarea",
+        "title": "Generated LinkedIn Post",
+        "readOnly": false,
+        "placeholder": "Generated post will appear here. You can edit before publishing."
+      }
+    }
+  },
+
+  "bolt_meta": {
+    "notes": [
+      "Replace {{GENERATE_WEBHOOK_URL}} and {{PUBLISH_WEBHOOK_URL}} with your actual n8n webhook URLs.",
+      "Bolt may require its own action binding format; the 'ui.actions' object above is intentionally generic—if Bolt expects a different key (e.g. 'onSubmit', 'endpoints', or 'integrations') you can map these keys accordingly.",
+      "The generate action expects the webhook to return a plain text response (the generated post). If your n8n returns an object (e.g. { \"post\": \"...\" }), set response mapping to 'response.post' in your Bolt integration.",
+      "Send Content-Type: application/json header."
+    ],
+
+    "vite_proxy_suggestion": {
+      "dev_proxy": {
+        "comment": "Add this to your Vite config (vite.config.js) under server.proxy during development to avoid CORS while calling n8n webhooks from the browser:",
+        "example": "server: { proxy: { '/api/generate': { target: 'https://your-n8n-domain', changeOrigin: true, rewrite: (path) => path.replace('^/api/generate', '/webhook-test/GENERATE_UUID') }, '/api/publish': { target: 'https://your-n8n-domain', changeOrigin: true, rewrite: (path) => path.replace('^/api/publish', '/webhook-test/PUBLISH_UUID') } } }"
+      },
+      "server_side_recommendation": "If socket hangups persist, perform webhook calls server-side (server-to-n8n) rather than from the browser to avoid CORS and unstable connections. Add retry/backoff and timeouts."
+    }
+  }
+}
