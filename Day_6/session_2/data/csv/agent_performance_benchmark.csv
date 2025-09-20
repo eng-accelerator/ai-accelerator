@@ -1,0 +1,16 @@
+agent_name,agent_type,accuracy_score,speed_ms,memory_usage_mb,cost_per_query,framework
+ReAct-GPT4,reasoning,0.87,1200,45.2,0.02,langchain
+AutoGPT,autonomous,0.78,2100,78.5,0.035,autogpt
+LangChain-Agent,tool_using,0.82,950,32.1,0.015,langchain
+CrewAI-Researcher,collaborative,0.85,1800,56.3,0.025,crewai
+BabyAGI,goal_oriented,0.76,2400,92.1,0.04,babyagi
+GPT-Engineer,code_generation,0.88,1600,41.7,0.028,gpt_engineer
+MetaGPT,multi_agent,0.84,1950,67.8,0.032,metagpt
+Camel-Agent,conversational,0.79,1100,38.4,0.018,camel
+AgentGPT,web_automation,0.81,1750,52.6,0.022,agentgpt
+SuperAGI,planning,0.83,1450,49.3,0.026,superagi
+OpenAI-Assistant,general,0.86,800,28.9,0.012,openai
+Claude-Agent,analytical,0.85,1050,35.7,0.02,anthropic
+PaLM-Agent,reasoning,0.84,1300,44.1,0.024,google
+Llama-Agent,open_source,0.80,1400,50.2,0.008,meta
+Mixtral-Agent,mixture_expert,0.82,1600,58.4,0.015,mistral

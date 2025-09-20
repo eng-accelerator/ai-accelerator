@@ -1,0 +1,16 @@
+test_case,task_type,agent_name,success_rate,avg_completion_time,error_count,user_satisfaction
+web_scraping,data_collection,AutoGPT,0.85,45.2,3,4.2
+code_generation,development,GPT-Engineer,0.92,120.5,1,4.7
+research_task,information_gathering,CrewAI-Researcher,0.88,180.3,2,4.5
+math_problem,reasoning,ReAct-GPT4,0.91,25.8,1,4.6
+customer_support,conversation,Claude-Agent,0.89,15.2,2,4.4
+data_analysis,analysis,PaLM-Agent,0.86,95.7,4,4.3
+task_planning,planning,SuperAGI,0.84,75.4,3,4.1
+document_summarization,text_processing,Llama-Agent,0.87,32.1,2,4.3
+image_description,multimodal,OpenAI-Assistant,0.83,18.6,5,4.0
+email_automation,automation,AgentGPT,0.90,12.3,1,4.5
+database_query,data_retrieval,LangChain-Agent,0.94,8.7,0,4.8
+creative_writing,generation,Mixtral-Agent,0.82,156.9,3,4.2
+translation,language,Claude-Agent,0.91,22.4,1,4.6
+scheduling,coordination,MetaGPT,0.88,67.2,2,4.4
+debugging,code_analysis,GPT-Engineer,0.89,89.3,3,4.3

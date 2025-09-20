@@ -1,0 +1,11 @@
+asset_type,ticker_symbol,company_name,investment_amount_usd,current_value_usd,percentage_return,risk_level
+Stock,AAPL,Apple Inc,10000,12500,25.0,Medium
+Stock,GOOGL,Alphabet Inc,8000,9200,15.0,Medium
+Stock,TSLA,Tesla Inc,5000,4200,-16.0,High
+Bond,US10Y,US Treasury 10-Year,15000,14800,-1.3,Low
+ETF,SPY,SPDR S&P 500 ETF,20000,22400,12.0,Medium
+Crypto,BTC,Bitcoin,3000,4800,60.0,Very High
+Stock,MSFT,Microsoft Corp,12000,14400,20.0,Medium
+REIT,VNQ,Vanguard Real Estate ETF,7000,7350,5.0,Medium
+Gold,GLD,SPDR Gold Trust,4000,3900,-2.5,Low
+Stock,NVDA,NVIDIA Corp,6000,9000,50.0,High
