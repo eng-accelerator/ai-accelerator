@@ -1,1 +1,4 @@
 .DS_Store
+storage
+.env
+youtube_pipeline_output
