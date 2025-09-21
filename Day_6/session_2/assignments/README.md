@@ -175,6 +175,8 @@ A simple but functional RAG web interface where users can:
 - Ask questions and receive AI responses
 - Get clear status messages
 
+<img width="1882" height="979" alt="Screenshot 2025-09-21 at 9 11 55 AM" src="https://github.com/user-attachments/assets/0ecc56d4-8dc1-435a-b2e5-ef2f003bcbaa" />
+
 ---
 
 ## Assignment 3b: Advanced Gradio RAG Frontend
@@ -233,6 +235,9 @@ A professional RAG interface with:
 - Clear display of current settings
 - Professional layout and user experience
 - Ability to experiment with different RAG approaches
+
+<img width="1804" height="983" alt="Screenshot 2025-09-21 at 9 39 22 AM" src="https://github.com/user-attachments/assets/37a6cbb4-baed-480e-a355-8c3cba1ad38b" />
+
 
 ### Key Benefits
 - **Parameter Understanding**: Learn how different settings affect RAG performance
