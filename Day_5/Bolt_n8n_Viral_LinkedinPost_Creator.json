@@ -1,0 +1,168 @@
+{
+  "name": "Bolt_n8n_Viral_LinkedinPost_Creator",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ee3e9945-97dc-470e-9ee5-053d528e15eb",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -224,
+        0
+      ],
+      "id": "44737221-04d0-46aa-85e4-f24749b1cd13",
+      "name": "Webhook",
+      "webhookId": "ee3e9945-97dc-470e-9ee5-053d528e15eb"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=\"Create a LinkedIn post with the following details:\\n\\n- Theme: -{{ $json.body.theme }} Category:{{ $json.body.category }} \\n- Tone: {{ $json.body.tone }}\\n- Length:{{ $json.body.length }} \n\n\\n\\nGuidelines:\\n1. Start with a strong hook to capture attention in the first 2 lines.\\n2. Keep the writing style engaging, professional, and authentic.\\n3. Make it easy to read with short sentences and clear flow.\\n4. Ensure the post fits LinkedIn’s style (not too casual, not too academic).\\n5. End with either a takeaway, a motivational line, or a subtle call-to-action (without sounding salesy).\\n\\nNow, generate the LinkedIn post.\"\n\nDon't use * and \\n in response. Format the post in paragraphs to look good for Linkedin",
+        "options": {
+          "systemMessage": "You are an expert LinkedIn content creator who writes highly engaging, professional, and authentic posts tailored to specific needs."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -16,
+        0
+      ],
+      "id": "f13e73b5-7a57-4a8f-810a-37cf4dbbd689",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        336,
+        0
+      ],
+      "id": "c58cf9a7-e36c-4840-8649-1f3507b7f957",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "20c84917-2446-49f4-9270-28efb9d31ed5",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -64,
+        336
+      ],
+      "id": "de4af335-389e-49db-99a9-9afdd7b20ff8",
+      "name": "Webhook1",
+      "webhookId": "20c84917-2446-49f4-9270-28efb9d31ed5"
+    },
+    {
+      "parameters": {
+        "person": "zelT-F7PM8",
+        "text": "={{ $json.body.content }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        288,
+        336
+      ],
+      "id": "ed8b0c86-5f78-4da2-b033-fc1d75a56186",
+      "name": "Create a post",
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "0VPJlc86gEnzU1mq",
+          "name": "LinkedIn account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -112,
+        176
+      ],
+      "id": "9df76f4a-4bb3-42a3-8549-de0080fd387c",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "wVSOMJaJYZhK94Kk",
+          "name": "OpenRouter account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Create a post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5e52a520-64d6-4a31-859f-f097e10b07c3",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5adcf055af070598f43d6403984bb72f646a6684587b890d0694cbc7278091f8"
+  },
+  "id": "7otpUh290xnvERAH",
+  "tags": []
+}

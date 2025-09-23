@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Your First AI Agent - Tutorial</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .code-block { background: #f4f4f4; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        .highlight { background: #fff3cd; padding: 10px; border-left: 4px solid #ffc107; }
+        .step { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Building Your First AI Agent: Step-by-Step Tutorial</h1>
+    
+    <div class="highlight">
+        <strong>Goal:</strong> Create a simple AI agent that can answer questions about documents using RAG (Retrieval-Augmented Generation).
+    </div>
+
+    <div class="step">
+        <h2>Step 1: Environment Setup</h2>
+        <p>First, install the required packages:</p>
+        <div class="code-block">
+            <code>
+pip install openai langchain llama-index
+            </code>
+        </div>
+    </div>
+
+    <div class="step">
+        <h2>Step 2: Create Document Loader</h2>
+        <p>Load your documents using LlamaIndex:</p>
+        <div class="code-block">
+            <code>
+from llama_index.core import SimpleDirectoryReader<br>
+documents = SimpleDirectoryReader("./data").load_data()
+            </code>
+        </div>
+    </div>
+
+    <div class="step">
+        <h2>Step 3: Build Vector Index</h2>
+        <p>Create a searchable index from your documents:</p>
+        <div class="code-block">
+            <code>
+from llama_index.core import VectorStoreIndex<br>
+index = VectorStoreIndex.from_documents(documents)
+            </code>
+        </div>
+    </div>
+
+    <div class="step">
+        <h2>Step 4: Create Query Engine</h2>
+        <p>Set up the query interface:</p>
+        <div class="code-block">
+            <code>
+query_engine = index.as_query_engine()<br>
+response = query_engine.query("What are the main types of AI agents?")
+            </code>
+        </div>
+    </div>
+
+    <h2>Key Concepts</h2>
+    <ul>
+        <li><strong>RAG (Retrieval-Augmented Generation):</strong> Combines information retrieval with text generation</li>
+        <li><strong>Vector Index:</strong> Enables semantic search through document embeddings</li>
+        <li><strong>Query Engine:</strong> Processes user questions and generates responses</li>
+        <li><strong>Document Loader:</strong> Handles various file formats (PDF, TXT, CSV, etc.)</li>
+    </ul>
+
+    <h2>Best Practices</h2>
+    <ol>
+        <li>Use clear, specific questions for better results</li>
+        <li>Chunk large documents appropriately</li>
+        <li>Choose the right embedding model for your domain</li>
+        <li>Monitor and evaluate agent performance regularly</li>
+    </ol>
+
+    <h2>Next Steps</h2>
+    <p>Once you have a basic agent working, consider:</p>
+    <ul>
+        <li>Adding memory capabilities</li>
+        <li>Integrating external tools and APIs</li>
+        <li>Implementing multi-agent collaboration</li>
+        <li>Fine-tuning for specific domains</li>
+    </ul>
+
+    <div class="highlight">
+        <strong>Tip:</strong> Start simple and iterate. The most effective agents often have focused, well-defined capabilities rather than trying to do everything.
+    </div>
+</body>
+</html>
